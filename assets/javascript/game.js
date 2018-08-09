@@ -4,6 +4,7 @@ var words = ["cow", "horse", "pig", "goat", "llama", "chicken", "duck", "sheep",
 
 var wordsIndex = 0;
 
+
     
 //blanks spaces to start game
 var blanks = ["_ _ _", "_ _ _ _", "_ _ _ _ _", "_ _ _ _ _ _ _"];
@@ -75,6 +76,20 @@ function guessesLeft() {
         document.getElementById("guessesLeft").innerHTML = ("Guesses Left: " + left);
 }
 
+function lettersUsed () {
+    var used = [];
+    var letter = event.key.toUpperCase();
+    console.log(letter);
+    used.push(letter);
+    
+        for (var l = 0; l < used.length; l++) {
+            document.getElementById("lettersUsed").innerHTML = "Letters Used: " + used[l];
+            console.log(used);
+    }  
+}
+
+
+
 
 //Calling Functions=======================================
 
@@ -82,12 +97,10 @@ renderWord();
 
 //allows the user to start to guess the words, by inputting letters and converts them to display in uppercase.
 document.onkeyup = function(event) {
-    var letter = event.key.toUpperCase();
-        console.log(letter);
-        document.getElementById("lettersUsed").innerHTML = "Letters Used: " + letter;
         
     updateScore();
     guessesLeft();
+    lettersUsed();
     
 }
 
